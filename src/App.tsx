@@ -3,14 +3,13 @@ import './styles/global.css';
 
 import { Heading } from './components/Heading/Heading';
 import { Container } from './components/Container/Container';
-import { Timer } from 'lucide-react';
+import { Logo } from './components/Logo/Logo';
 
 function App() {
   return (
     <>
       <Heading>
-        <Timer />
-        Chronos
+        <Logo />
       </Heading>
       <Container>Hello world! </Container>
     </>
