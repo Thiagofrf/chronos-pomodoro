@@ -4,10 +4,10 @@ import styles from './Logo.module.css';
 export function Logo() {
   return (
     <div className={styles.logo}>
-      <button className={styles.logoButton}>
+      <a className={styles.logoButton} href='#'>
         <Timer size={64} />
         Chronos
-      </button>
+      </a>
     </div>
   );
 }

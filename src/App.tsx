@@ -1,17 +1,17 @@
 import './styles/theme.css';
 import './styles/global.css';
 
-import { Heading } from './components/Heading/Heading';
 import { Container } from './components/Container/Container';
 import { Logo } from './components/Logo/Logo';
+import { Menu } from './components/Menu/Menu';
 
 function App() {
   return (
     <>
-      <Heading>
+      <Container>
         <Logo />
-      </Heading>
-      <Container>Hello world! </Container>
+        <Menu />
+      </Container>
     </>
   );
 }
