@@ -1,0 +1,69 @@
+.homeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.formInput {
+  background: none;
+  border: none;
+  border-bottom: 0.2rem solid var(--primary);
+  width: 25rem;
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-default);
+}
+
+.formHelper {
+  margin-top: 3rem;
+}
+
+.formCicles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.cicles {
+  display: flex;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.cicle {
+  display: block;
+  background: var(--warning);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.startButton {
+  margin-top: 5rem;
+  width: 25rem;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 1rem;
+}
+
+.startButton:hover {
+  cursor: pointer;
+  filter: brightness(80%);
+  transition: all 0.1s ease-in-out;
+}
