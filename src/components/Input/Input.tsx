@@ -4,16 +4,11 @@ type InputProps = {
   labelText?: string;
 } & React.ComponentProps<'input'>;
 
-export function Input({ id, type, placeholder, labelText }: InputProps) {
+export function Input({ id, labelText, ...props }: InputProps) {
   return (
-    <label className={styles.formLabel} htmlFor='taskInput'>
+    <label className={styles.formLabel} htmlFor={id}>
       {labelText}
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        className={styles.formInput}
-      />
+      <input id={id} className={styles.formInput} {...props} />
     </label>
   );
 }

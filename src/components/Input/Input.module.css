@@ -8,10 +8,22 @@
 
 .formInput {
   background: none;
-  border: none;
+  border: 0.2rem solid transparent;
   border-bottom: 0.2rem solid var(--primary);
   width: 25rem;
   text-align: center;
   padding: 1rem;
   color: var(--text-default);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.formInput:focus {
+  border: 0.2rem solid var(--primary);
+  border-radius: 0.8rem;
+}
+
+.formInput:disabled {
+  border-bottom: 0.2rem solid var(--disabled);
+  color: var(--text-muted);
 }
