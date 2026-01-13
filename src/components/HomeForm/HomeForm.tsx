@@ -2,6 +2,7 @@ import styles from './HomeForm.module.css';
 
 import { CirclePlay } from 'lucide-react';
 import { Input } from '../Input/Input';
+import { Cycles } from '../Cycles/Cycles';
 
 export function HomeForm() {
   return (
@@ -15,14 +16,7 @@ export function HomeForm() {
       <p className={styles.formHelper}>
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
       </p>
-      <div className={styles.formCicles}>
-        Ciclos:{' '}
-        <div className={styles.cicles}>
-          <span className={styles.cicle}></span>
-          <span className={styles.cicle}></span>
-          <span className={styles.cicle}></span>
-        </div>
-      </div>
+      <Cycles />
 
       <button className={styles.startButton} type='submit'>
         <CirclePlay size={32} />
