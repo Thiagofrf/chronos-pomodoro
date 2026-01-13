@@ -1,19 +1,17 @@
 import styles from './HomeForm.module.css';
 
 import { CirclePlay } from 'lucide-react';
+import { Input } from '../Input/Input';
 
 export function HomeForm() {
   return (
     <form className={styles.homeForm} action=''>
-      <label className={styles.formLabel} htmlFor='taskInput'>
-        Task:
-        <input
-          id='taskInput'
-          type='text'
-          placeholder='Ex.: Estudar para a prova'
-          className={styles.formInput}
-        />
-      </label>
+      <Input
+        id='taskInput'
+        type='text'
+        placeholder='Ex.: Estudar para a prova'
+        labelText='Task:'
+      />
       <p className={styles.formHelper}>
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
       </p>
