@@ -1,0 +1,26 @@
+.defaultButton {
+  margin-top: 5rem;
+  width: 25rem;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 1rem;
+  color: var(--text-over-primary);
+  transition: all 0.1s ease-in-out;
+}
+
+.defaultButton:hover {
+  cursor: pointer;
+  filter: brightness(80%);
+}
+
+.startButton {
+  background-color: var(--primary);
+}
+
+.stopButton {
+  background-color: var(--error);
+}

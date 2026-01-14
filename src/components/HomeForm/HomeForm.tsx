@@ -1,8 +1,9 @@
 import styles from './HomeForm.module.css';
 
-import { CirclePlay } from 'lucide-react';
+import { CirclePlay, StopCircleIcon } from 'lucide-react';
 import { Input } from '../Input/Input';
 import { Cycles } from '../Cycles/Cycles';
+import { DefaultButton } from '../DefaultButton/DefaultButton';
 
 export function HomeForm() {
   return (
@@ -17,10 +18,12 @@ export function HomeForm() {
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
       </p>
       <Cycles />
-
-      <button className={styles.startButton} type='submit'>
+      <DefaultButton type='submit'>
         <CirclePlay size={32} />
-      </button>
+      </DefaultButton>
+      <DefaultButton type='submit' status='stop'>
+        <StopCircleIcon size={32} />
+      </DefaultButton>
     </form>
   );
 }
