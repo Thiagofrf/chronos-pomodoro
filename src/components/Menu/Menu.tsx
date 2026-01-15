@@ -1,5 +1,5 @@
 import styles from './Menu.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { MenuLink } from '../MenuLink/MenuLink';
 import {
@@ -21,6 +21,10 @@ export function Menu() {
       return nextTheme;
     });
   }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <nav className={styles.menuContainer}>
