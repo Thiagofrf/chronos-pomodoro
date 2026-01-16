@@ -11,7 +11,15 @@ import {
 } from 'lucide-react';
 
 export function Menu() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'light' ? 'light' : 'dark';
+  });
+
+  const nextThemeIcon = {
+    light: <MoonIcon />,
+    dark: <SunIcon />,
+  };
 
   function handleThemeChange(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
@@ -24,6 +32,7 @@ export function Menu() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (
@@ -42,7 +51,7 @@ export function Menu() {
         title='Settings'
       />
       <MenuLink
-        icon={theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        icon={nextThemeIcon[theme]}
         link='#'
         aria-label='Change theme'
         title='Change theme'
