@@ -1,5 +1,5 @@
 import { Container } from './components/Container/Container';
-import { TaskContextProvider } from './contexts/TaskContext';
+import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider';
 import { Home } from './pages/Home/Home';
 
 import './styles/theme.css';
