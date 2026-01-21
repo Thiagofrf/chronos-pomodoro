@@ -1,4 +1,5 @@
 import { Container } from './components/Container/Container';
+import { TaskContextProvider } from './contexts/TaskContext';
 import { Home } from './pages/Home/Home';
 
 import './styles/theme.css';
@@ -8,7 +9,9 @@ function App() {
   return (
     <>
       <Container>
-        <Home />
+        <TaskContextProvider>
+          <Home />
+        </TaskContextProvider>
       </Container>
     </>
   );
