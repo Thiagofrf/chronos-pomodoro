@@ -9,13 +9,14 @@ import { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getCycleType } from '../../utils/getCycleType';
+import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 export function HomeForm() {
   const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
 
   const nextCycle = getNextCycle(state.currentCycle);
-  const nextCycleType = getCycleType(state.currentCycle);
+  const nextCycleType = getCycleType(nextCycle);
 
   const handleCreateTaskForm = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
@@ -35,7 +36,7 @@ export function HomeForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptedDate: null,
-      duration: 1,
+      duration: state.config[nextCycleType],
       type: nextCycleType,
     };
 
@@ -47,7 +48,7 @@ export function HomeForm() {
         activeTask: newTask,
         currentCycle: nextCycle,
         secondsRemaining,
-        formattedSecondsRemaining: '00:00',
+        formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
         tasks: [...prevState.tasks, newTask],
       };
     });
