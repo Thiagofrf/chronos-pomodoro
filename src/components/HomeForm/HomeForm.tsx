@@ -7,10 +7,13 @@ import { DefaultButton } from '../DefaultButton/DefaultButton';
 import styles from './HomeForm.module.css';
 import { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
+import { getNextCycle } from '../../utils/getNextCycle';
 
 export function HomeForm() {
-  const { setState } = useTaskContext();
+  const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
+
+  const nextCycle = getNextCycle(state.currentCycle);
 
   const handleCreateTaskForm = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
@@ -40,7 +43,7 @@ export function HomeForm() {
       return {
         ...prevState,
         activeTask: newTask,
-        currentCycle: 1,
+        currentCycle: nextCycle,
         secondsRemaining,
         formattedSecondsRemaining: '00:00',
         tasks: [...prevState.tasks, newTask],
