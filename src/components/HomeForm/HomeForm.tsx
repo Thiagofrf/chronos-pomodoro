@@ -8,12 +8,14 @@ import styles from './HomeForm.module.css';
 import { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
+import { getCycleType } from '../../utils/getCycleType';
 
 export function HomeForm() {
   const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
 
   const nextCycle = getNextCycle(state.currentCycle);
+  const nextCycleType = getCycleType(state.currentCycle);
 
   const handleCreateTaskForm = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
@@ -34,7 +36,7 @@ export function HomeForm() {
       completeDate: null,
       interruptedDate: null,
       duration: 1,
-      type: 'workTime',
+      type: nextCycleType,
     };
 
     const secondsRemaining = newTask.duration * 60;
