@@ -67,7 +67,7 @@ export function HomeForm() {
       <p className={styles.formHelper}>
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
       </p>
-      <Cycles />
+      {state.currentCycle > 0 && <Cycles />}
       <DefaultButton type='submit'>
         <CirclePlay size={32} />
       </DefaultButton>
