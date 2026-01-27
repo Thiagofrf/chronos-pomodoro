@@ -63,6 +63,7 @@ export function HomeForm() {
         labelText='Task:'
         value={taskNameInput.current?.value}
         ref={taskNameInput}
+        disabled={!!state.activeTask}
       />
       <p className={styles.formHelper}>
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
