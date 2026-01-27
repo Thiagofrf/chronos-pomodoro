@@ -54,6 +54,18 @@ export function HomeForm() {
     });
   };
 
+  function handleInterruptTask() {
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        currentCycle: 0,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+      };
+    });
+  }
+
   return (
     <form className={styles.homeForm} action='' onSubmit={handleCreateTaskForm}>
       <Input
@@ -69,12 +81,25 @@ export function HomeForm() {
         Nesse ciclo <b>descanse</b> por <b>5 min.</b>
       </p>
       {state.currentCycle > 0 && <Cycles />}
-      <DefaultButton type='submit'>
-        <CirclePlay size={32} />
-      </DefaultButton>
-      <DefaultButton type='submit' status='stop'>
-        <StopCircleIcon size={32} />
-      </DefaultButton>
+      {!state.activeTask ? (
+        <DefaultButton
+          type='submit'
+          aria-label='Iniciar nova tarefa'
+          title='Iniciar nova tarefa'
+          key={'submitButton'}
+        >
+          <CirclePlay size={32} />
+        </DefaultButton>
+      ) : (
+        <DefaultButton
+          type='button'
+          status='stop'
+          onClick={handleInterruptTask}
+          key={'stopButton'}
+        >
+          <StopCircleIcon size={32} />
+        </DefaultButton>
+      )}
     </form>
   );
 }
