@@ -62,6 +62,13 @@ export function HomeForm() {
         currentCycle: 0,
         secondsRemaining: 0,
         formattedSecondsRemaining: '00:00',
+        tasks: prevState.tasks.map(task => {
+          if (prevState?.activeTask?.id === task.id) {
+            return { ...task, interruptedDate: Date.now() };
+          }
+
+          return task;
+        }),
       };
     });
   }
