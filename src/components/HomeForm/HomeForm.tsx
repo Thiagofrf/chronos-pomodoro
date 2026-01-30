@@ -10,6 +10,7 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getCycleType } from '../../utils/getCycleType';
 import { TaskActionsTypes } from '../../contexts/TaskContext/taskActions';
+import { Tips } from '../Tips/Tips';
 
 export function HomeForm() {
   const { state, dispatch } = useTaskContext();
@@ -58,9 +59,9 @@ export function HomeForm() {
         ref={taskNameInput}
         disabled={!!state.activeTask}
       />
-      <p className={styles.formHelper}>
-        Nesse ciclo <b>descanse</b> por <b>5 min.</b>
-      </p>
+
+      <Tips />
+
       {state.currentCycle > 0 && <Cycles />}
       {!state.activeTask ? (
         <DefaultButton
