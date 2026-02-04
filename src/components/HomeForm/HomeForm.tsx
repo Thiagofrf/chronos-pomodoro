@@ -11,6 +11,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getCycleType } from '../../utils/getCycleType';
 import { TaskActionsTypes } from '../../contexts/TaskContext/taskActions';
 import { Tips } from '../Tips/Tips';
+import { showMessage } from '../../adapters/showMessage';
 
 export function HomeForm() {
   const { state, dispatch } = useTaskContext();
@@ -21,13 +22,14 @@ export function HomeForm() {
 
   const handleCreateTaskForm = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
+    showMessage.dissmiss();
 
     if (!taskNameInput.current) return;
 
     const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
-      alert('Digite o nome da tarefa');
+      showMessage.warning('Digite o nome da tarefa');
       return;
     }
 
@@ -42,10 +44,15 @@ export function HomeForm() {
     };
 
     dispatch({ type: TaskActionsTypes.START_TASK, payload: newTask });
+
+    showMessage.success(`Tarefa iniciada!`);
   };
 
   function handleInterruptTask() {
+    showMessage.dissmiss();
     dispatch({ type: TaskActionsTypes.INTERRUPT_TASK });
+
+    showMessage.error('Tarefa interrompida.');
   }
 
   return (
@@ -55,7 +62,6 @@ export function HomeForm() {
         type='text'
         placeholder='Ex.: Estudar para a prova'
         labelText='Task:'
-        value={taskNameInput.current?.value}
         ref={taskNameInput}
         disabled={!!state.activeTask}
       />
