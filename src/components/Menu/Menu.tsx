@@ -37,16 +37,16 @@ export function Menu() {
 
   return (
     <nav className={styles.menuContainer}>
-      <MenuLink icon={<HouseIcon />} link='#' aria-label='Home' title='Home' />
+      <MenuLink icon={<HouseIcon />} link='/' aria-label='Home' title='Home' />
       <MenuLink
         icon={<HistoryIcon />}
-        link='#'
+        link='/history'
         aria-label='History'
         title='History'
       />
       <MenuLink
         icon={<SettingsIcon />}
-        link='#'
+        link='/settings'
         aria-label='Settings'
         title='Settings'
       />
