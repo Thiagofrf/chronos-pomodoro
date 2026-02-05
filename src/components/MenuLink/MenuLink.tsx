@@ -1,5 +1,5 @@
+import { RouterLink } from '../RouterLink/RouterLink';
 import styles from './MenuLink.module.css';
-import { Link } from 'react-router';
 
 type MenuLinkProps = {
   icon: React.ReactNode;
@@ -8,8 +8,8 @@ type MenuLinkProps = {
 
 export function MenuLink({ icon, link, ...props }: MenuLinkProps) {
   return (
-    <Link className={styles.menuLink} to={link} {...props}>
+    <RouterLink className={styles.menuLink} href={link} {...props}>
       {icon}
-    </Link>
+    </RouterLink>
   );
 }
