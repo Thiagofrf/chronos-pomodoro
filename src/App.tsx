@@ -1,13 +1,10 @@
 import { Container } from './components/Container/Container';
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider';
-import { Home } from './pages/Home/Home';
 import { MessagesContainer } from './components/MessagesContainer/MessagesContainer';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { MainRouter } from './routers/MainRouter/MainRouter';
 
 import './styles/theme.css';
 import './styles/global.css';
-import { NotFound } from './pages/NotFound/NotFound';
-import { AboutPomodoro } from './pages/About/About';
 
 function App() {
   return (
@@ -15,13 +12,7 @@ function App() {
       <Container>
         <TaskContextProvider>
           <MessagesContainer>
-            <BrowserRouter>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about-pomodoro' element={<AboutPomodoro />} />
-                <Route path='*' element={<NotFound />} />
-              </Routes>
-            </BrowserRouter>
+            <MainRouter />
           </MessagesContainer>
         </TaskContextProvider>
       </Container>
