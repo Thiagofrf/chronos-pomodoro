@@ -12,6 +12,7 @@
 .responsiveTable {
   overflow-x: auto;
   border-radius: 0.8rem;
+  margin-top: 5rem;
 }
 
 .responsiveTable table {
