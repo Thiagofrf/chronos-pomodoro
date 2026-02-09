@@ -44,3 +44,8 @@
 .thSort:hover {
   filter: brightness(80%);
 }
+
+.noHistoryHelper {
+  text-align: center;
+  margin-top: 2rem;
+}
