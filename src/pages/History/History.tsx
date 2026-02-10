@@ -10,6 +10,7 @@ import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, SortTasksOptions } from '../../utils/sortTasks';
 import { TaskActionsTypes } from '../../contexts/TaskContext/taskActions';
+import { showMessage } from '../../adapters/showMessage';
 
 export function History() {
   const { state, dispatch } = useTaskContext();
@@ -40,9 +41,21 @@ export function History() {
   }
 
   function handleResetHistory() {
-    dispatch({
-      type: TaskActionsTypes.RESET_STATE,
-    });
+    showMessage.dissmiss();
+    showMessage.confirm(
+      'Tem certeza que deseja apagar todo o histórico de tarefas?',
+      confirmation => {
+        if (confirmation) {
+          dispatch({
+            type: TaskActionsTypes.RESET_STATE,
+          });
+
+          return;
+        }
+
+        return null;
+      },
+    );
   }
 
   useEffect(() => {
