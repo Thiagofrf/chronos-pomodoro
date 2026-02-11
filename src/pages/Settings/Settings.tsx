@@ -8,9 +8,10 @@ import { MainTemplate } from '../../templates/MainTemplate/MainTemplate';
 import styles from './Settings.module.css';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { showMessage } from '../../adapters/showMessage';
+import { TaskActionsTypes } from '../../contexts/TaskContext/taskActions';
 
 export function Settings() {
-  const { state } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
   const workTimeInputRef = useRef<HTMLInputElement>(null);
   const shortBreakTimeInputRef = useRef<HTMLInputElement>(null);
   const longBreakTimeInputRef = useRef<HTMLInputElement>(null);
@@ -45,6 +46,17 @@ export function Settings() {
         'O tempo de descanso longo deve ser entre 1 e 60 minutos.',
       );
     }
+
+    dispatch({
+      type: TaskActionsTypes.CHANGE_SETTINGS,
+      payload: {
+        workTime,
+        shortBreakTime,
+        longBreakTime,
+      },
+    });
+
+    showMessage.success('Configurações salvas');
   }
 
   return (
