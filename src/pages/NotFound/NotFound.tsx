@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { GenericHtml } from '../../components/GenericHtml/GenericHtml';
 import { Heading } from '../../components/Heading/Heading';
 import { MainTemplate } from '../../templates/MainTemplate/MainTemplate';
 import { RouterLink } from '../../components/RouterLink/RouterLink';
 
 export function NotFound() {
+  useEffect(() => {
+    document.title = 'Página não encontrada';
+  }, []);
+
   return (
     <MainTemplate>
       <GenericHtml>

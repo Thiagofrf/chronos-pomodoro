@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { SaveIcon } from 'lucide-react';
 import { DefaultButton } from '../../components/DefaultButton/DefaultButton';
 import { Heading } from '../../components/Heading/Heading';
@@ -15,6 +15,10 @@ export function Settings() {
   const workTimeInputRef = useRef<HTMLInputElement>(null);
   const shortBreakTimeInputRef = useRef<HTMLInputElement>(null);
   const longBreakTimeInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    document.title = 'Configurações - Chronos Pomodoro';
+  }, []);
 
   function handleSendSettings(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
