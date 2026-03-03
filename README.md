@@ -1,73 +1,134 @@
-# React + TypeScript + Vite
+# ⏳ Chronos Pomodoro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Pomodoro timer built with **React 19** to explore state management patterns, side effects, Context API, and Web Workers — wrapped in a clean and focused UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## React Compiler
+**Production URL:**  
+👉 https://chronos-pomodoro-wine-tau.vercel.app/
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 📌 About the Project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Chronos Pomodoro** is a productivity-focused web application inspired by the Pomodoro Technique.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The application allows users to:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Create a task with a custom name
+- Configure timer durations:
+  - Work time
+  - Short break
+  - Long break
+- Automatically cycle between work and break sessions
+- Track completed sessions
+- View session history of previous cycles
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This project was built with the main goal of studying and applying **modern React 19 patterns and architectural decisions**, rather than simply creating a timer.
+
+---
+
+## 🧠 Features
+
+- ⏱ Customizable Pomodoro cycles  
+- 📝 Task-based session tracking  
+- 🔁 Automatic work/break flow  
+- 📊 Session history page  
+- 🧵 Timer powered by Web Workers (background execution)  
+- 🎯 Clean and minimal UI  
+- 🚀 Deployed on Vercel  
+
+---
+
+## 🏗 Tech Stack
+
+- **Vite** — Fast development environment and bundler  
+- **React 19** — Latest React features and hooks  
+- **CSS (Vanilla)** — Custom styling without UI libraries  
+- **Web Workers (JavaScript)** — Timer logic executed off the main thread  
+- **Vercel** — Deployment and hosting  
+
+---
+
+## 🎯 Learning Goals
+
+This project was created to deeply explore:
+
+### State Management
+- `useState` for local component state  
+- `useReducer` with `dispatch` pattern for predictable state transitions  
+
+### Side Effects
+- `useEffect` for lifecycle control  
+- Proper cleanup for worker communication  
+
+### Global State
+- `Context API` for shared timer and session state  
+- Avoiding prop drilling  
+
+### Architecture & Performance
+- Separation between UI and timer logic  
+- Web Worker integration for non-blocking timers  
+- Reducer-based state transitions  
+- Modular component structure  
+
+---
+
+## 🏛 Architecture Overview
+
+```bash
+src/
+ ├── adapter/ -> Guarantee security using external libs
+ ├── components/
+ ├── contexts/
+ ├── models/
+ ├── routers/ -> Guarantee security using external libs
+ ├── workers/
+ ├── pages/
+ ├── templates/
+ ├── styles/
+ ├── utils/
+ └── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Architectural Decisions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Timer logic runs inside a Web Worker to prevent UI blocking.
+- A reducer pattern ensures predictable state transitions.
+- Context API centralizes global state.
+- History is currently stored in localStorage
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/chronos-pomodoro.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
+
+---
+
+
+## 👨‍💻 Author
+
+**Thiago Fontanella**  
+Senior Front-End Developer  
+
+- Focused on scalable React architectures  
+- Performance-oriented mindset  
+- Experience with React, TypeScript, and modern front-end ecosystems  
+
+---
+
+## 📄 License
+
+This project was created for study and portfolio purposes.
